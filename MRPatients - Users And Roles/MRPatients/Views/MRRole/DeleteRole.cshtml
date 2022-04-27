@@ -1,0 +1,22 @@
+﻿@model DeleteRole
+@{
+    var roleId = ViewBag.roleId;
+    ViewData["Title"] = "Confirm Delete of Role ''";
+}
+
+<h1>@ViewData["Title"]</h1>
+<h4>Users in Role</h4>
+@for (int i = 0; i < Model.Users.Count; i++)
+{
+    <li>
+        <label>@Model.Users[i]</label>
+    </li>
+
+}
+<form method="post" action="DeleteRole">
+    <input type="hidden" name="roleId" value="@Model.Id" />
+    <button name="continueDelete" type="submit" value="Y">Delete Confirmed</button>
+    <button name="continueDelete" type="submit" value="N">Cancel Delete</button>
+</form>
+<a asp-action="ListRole">Return to Role list</a>
+
